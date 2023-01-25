@@ -1,0 +1,52 @@
+CREATE TABLE aluno ( 
+id SERIAL PRIMARY KEY NOT NULL,
+cpf VARCHAR(11) NOT NULL,
+nome VARCHAR(100), 
+data_nascimento DATE, 
+telefone VARCHAR(11),
+email VARCHAR(45)
+); 
+
+CREATE TABLE facilitador_soft (
+id SERIAL PRIMARY KEY NOT NULL,
+cpf VARCHAR(11) NOT NULL,
+nome VARCHAR(100), 
+data_nascimento DATE, 
+telefone VARCHAR(11),
+email VARCHAR(45)
+); 
+
+CREATE TABLE facilitador_hard (
+id SERIAL PRIMARY KEY NOT NULL,
+cpf VARCHAR(11) NOT NULL,
+nome VARCHAR(100), 
+data_nascimento DATE, 
+telefone VARCHAR(11),
+email VARCHAR(45)
+); 
+
+CREATE TABLE monitor (
+id SERIAL PRIMARY KEY NOT NULL,
+cpf VARCHAR(11) NOT NULL,
+nome VARCHAR(100), 
+data_nascimento DATE, 
+telefone VARCHAR(11),
+email VARCHAR(45)
+); 
+
+CREATE TABLE curso (
+id SERIAL PRIMARY KEY NOT NULL, 
+nome VARCHAR(30), 
+preco FLOAT,
+descricao LONGTEXT,
+carga_horaria INT(3)
+); 
+
+CREATE TABLE turma ( 
+id SERIAL PRIMARY KEY NOT NULL
+);
+
+ALTER TABLE turma ADD FOREIGN KEY(id) REFERENCES facilitador_soft (id)
+ALTER TABLE turma ADD FOREIGN KEY(id) REFERENCES facilitador_hard (id)
+ALTER TABLE turma ADD FOREIGN KEY(id) REFERENCES monitor(id) 
+ALTER TABLE turma ADD FOREIGN KEY(id) REFERENCES aluno(id)
